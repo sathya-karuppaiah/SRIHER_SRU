@@ -40,9 +40,15 @@ class _SplashScreenState extends State<SplashScreen>
 
     _controller.forward();
 
-    // Navigate to MainNavigationScreen after 4 seconds
+    // Navigate to MainNavigationScreen after 4 seconds if not on admin route
     Timer(const Duration(milliseconds: 4000), () {
       if (mounted) {
+        final fragment = Uri.base.fragment;
+        final path = Uri.base.path;
+        final routeName = ModalRoute.of(context)?.settings.name;
+        if (fragment.contains('admin') || path.contains('admin') || (routeName != null && routeName.contains('/admin'))) {
+          return; // Do NOT redirect if Admin Dashboard was opened!
+        }
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => const MainNavigationScreen()),
         );

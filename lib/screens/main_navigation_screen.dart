@@ -213,6 +213,17 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           _buildDrawerItem(Icons.person_outline, "My Profile", 4),
           const Divider(color: Colors.white12),
           ListTile(
+            leading: const Icon(Icons.admin_panel_settings_outlined, color: AppTheme.primaryLight),
+            title: Text(
+              "Admin Dashboard Console",
+              style: GoogleFonts.outfit(color: Colors.white, fontWeight: FontWeight.w600),
+            ),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/admin');
+            },
+          ),
+          ListTile(
             leading: const Icon(Icons.info_outline, color: Colors.white70),
             title: Text(
               "About Srihers Backstage",
