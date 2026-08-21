@@ -52,26 +52,32 @@ class AdminHeader extends StatelessWidget implements PreferredSizeWidget {
               tooltip: "Toggle Navigation",
             ),
           
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: GoogleFonts.outfit(
-                  color: AppTheme.primaryDark,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: GoogleFonts.outfit(
+                    color: AppTheme.primaryDark,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
-              ),
-              Text(
-                subtitle,
-                style: GoogleFonts.outfit(
-                  color: AppTheme.textLight,
-                  fontSize: 11.5,
+                Text(
+                  subtitle,
+                  style: GoogleFonts.outfit(
+                    color: AppTheme.textLight,
+                    fontSize: 11.5,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
 
           const Spacer(),

@@ -34,7 +34,7 @@ class AdminStatCard extends StatelessWidget {
         onTap: onTap,
         borderRadius: BorderRadius.circular(16),
         child: Container(
-          padding: const EdgeInsets.all(18),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
           decoration: BoxDecoration(
             color: AppTheme.surface,
             borderRadius: BorderRadius.circular(16),
@@ -60,8 +60,8 @@ class AdminStatCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    width: 44,
-                    height: 44,
+                    width: 42,
+                    height: 42,
                     decoration: BoxDecoration(
                       color: accentColor.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(12),
@@ -125,33 +125,31 @@ class AdminStatCard extends StatelessWidget {
                     ),
                 ],
               ),
-              
-              const SizedBox(height: 14),
 
-              // Metric Value
-              Text(
-                value,
-                style: GoogleFonts.outfit(
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
-                  color: AppTheme.textDark,
-                  height: 1.1,
-                ),
-              ),
-
-              const SizedBox(height: 4),
-
-              // Title Label & Subtitle
+              // Metric Value & Titles Block
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
                 children: [
+                  Text(
+                    value,
+                    style: GoogleFonts.outfit(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: AppTheme.textDark,
+                      height: 1.1,
+                    ),
+                  ),
+                  const SizedBox(height: 3),
                   Text(
                     title,
                     style: GoogleFonts.outfit(
-                      fontSize: 13.5,
+                      fontSize: 13,
                       fontWeight: FontWeight.w600,
                       color: AppTheme.primaryDark,
                     ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 2),
                   Text(

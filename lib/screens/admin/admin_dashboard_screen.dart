@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../theme/app_theme.dart';
 import 'widgets/admin_header.dart';
+import 'widgets/admin_home_page_management_view.dart';
 import 'widgets/admin_overview_view.dart';
 import 'widgets/admin_section_placeholder.dart';
 import 'widgets/admin_sidebar.dart';
@@ -47,6 +48,8 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
           mainViewContent = AdminOverviewView(
             onNavigateToTab: _onDestinationSelected,
           );
+        } else if (currentItem.title == "Home Page Management") {
+          mainViewContent = const AdminHomePageManagementView();
         } else {
           mainViewContent = AdminSectionPlaceholder(
             title: currentItem.title,

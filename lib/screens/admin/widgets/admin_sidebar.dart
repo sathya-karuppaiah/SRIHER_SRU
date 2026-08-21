@@ -29,6 +29,12 @@ class AdminSidebar extends StatelessWidget {
       filledIcon: Icons.dashboard,
     ),
     AdminNavItem(
+      title: "Home Page Management",
+      outlineIcon: Icons.home_max_outlined,
+      filledIcon: Icons.home_max,
+      badgeText: "4",
+    ),
+    AdminNavItem(
       title: "Events",
       outlineIcon: Icons.event_outlined,
       filledIcon: Icons.event,

@@ -180,7 +180,7 @@ class AdminOverviewView extends StatelessWidget {
         "accentColor": AppTheme.primaryDark,
         "trend": "+12.5%",
         "isPositive": true,
-        "tabIndex": 1,
+        "tabIndex": 2,
       },
       {
         "title": "Upcoming Events",
@@ -190,7 +190,7 @@ class AdminOverviewView extends StatelessWidget {
         "accentColor": const Color(0xFF0288D1), // Blue
         "trend": "Scheduled",
         "isPositive": true,
-        "tabIndex": 2,
+        "tabIndex": 3,
       },
       {
         "title": "Ongoing Events",
@@ -199,7 +199,7 @@ class AdminOverviewView extends StatelessWidget {
         "icon": Icons.play_circle_fill,
         "accentColor": AppTheme.primaryLight, // SRIHER Red
         "badgeText": "3 LIVE NOW",
-        "tabIndex": 1,
+        "tabIndex": 2,
       },
       {
         "title": "Completed Events",
@@ -209,7 +209,7 @@ class AdminOverviewView extends StatelessWidget {
         "accentColor": const Color(0xFF2E7D32), // Green
         "trend": "Finished",
         "isPositive": true,
-        "tabIndex": 1,
+        "tabIndex": 2,
       },
       {
         "title": "Registrations",
@@ -219,7 +219,7 @@ class AdminOverviewView extends StatelessWidget {
         "accentColor": const Color(0xFFED6C02), // Orange
         "trend": "+18.4%",
         "isPositive": true,
-        "tabIndex": 4,
+        "tabIndex": 5,
       },
       {
         "title": "Attendees",
@@ -229,7 +229,7 @@ class AdminOverviewView extends StatelessWidget {
         "accentColor": const Color(0xFF7B1FA2), // Purple
         "trend": "+8.2%",
         "isPositive": true,
-        "tabIndex": 5,
+        "tabIndex": 6,
       },
       {
         "title": "SDG Goals Tracked",
@@ -238,7 +238,7 @@ class AdminOverviewView extends StatelessWidget {
         "icon": Icons.public,
         "accentColor": const Color(0xFF00838F), // Teal
         "badgeText": "17/17 GOALS",
-        "tabIndex": 3,
+        "tabIndex": 4,
       },
     ];
 
@@ -335,30 +335,36 @@ class AdminOverviewView extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Event Status Summary",
-                      style: GoogleFonts.outfit(
-                        fontSize: 16.5,
-                        fontWeight: FontWeight.bold,
-                        color: AppTheme.primaryDark,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Event Status Summary",
+                        style: GoogleFonts.outfit(
+                          fontSize: 16.5,
+                          fontWeight: FontWeight.bold,
+                          color: AppTheme.primaryDark,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                    ),
-                    const SizedBox(height: 2),
-                    Text(
-                      "Live status across Upcoming, Ongoing & Completed events",
-                      style: GoogleFonts.outfit(
-                        fontSize: 11.5,
-                        color: AppTheme.textLight,
+                      const SizedBox(height: 2),
+                      Text(
+                        "Live status across Upcoming, Ongoing & Completed events",
+                        style: GoogleFonts.outfit(
+                          fontSize: 11.5,
+                          color: AppTheme.textLight,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 TextButton.icon(
                   onPressed: () {
-                    if (onNavigateToTab != null) onNavigateToTab!(1);
+                    if (onNavigateToTab != null) onNavigateToTab!(2);
                   },
                   icon: const Icon(Icons.arrow_forward, size: 14, color: AppTheme.primaryLight),
                   label: Text(
@@ -423,26 +429,33 @@ class AdminOverviewView extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(width: 10),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                event.title,
-                                style: GoogleFonts.outfit(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppTheme.textDark,
+                          Container(
+                            constraints: const BoxConstraints(maxWidth: 180),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  event.title,
+                                  style: GoogleFonts.outfit(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppTheme.textDark,
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
-                              ),
-                              Text(
-                                event.location,
-                                style: GoogleFonts.outfit(
-                                  fontSize: 10.5,
-                                  color: AppTheme.textLight,
+                                Text(
+                                  event.location,
+                                  style: GoogleFonts.outfit(
+                                    fontSize: 10.5,
+                                    color: AppTheme.textLight,
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -568,12 +581,16 @@ class AdminOverviewView extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                "SDG Alignment Coverage",
-                style: GoogleFonts.outfit(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: AppTheme.primaryDark,
+              Expanded(
+                child: Text(
+                  "SDG Alignment Coverage",
+                  style: GoogleFonts.outfit(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: AppTheme.primaryDark,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
               Text(
@@ -752,6 +769,8 @@ class AdminOverviewView extends StatelessWidget {
                               fontWeight: FontWeight.w600,
                               color: AppTheme.textDark,
                             ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
                           Text(
                             act["subtitle"],
@@ -759,6 +778,8 @@ class AdminOverviewView extends StatelessWidget {
                               fontSize: 10.5,
                               color: AppTheme.textLight,
                             ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ],
                       ),
